@@ -134,20 +134,21 @@
 <body class="text-gray-700 antialiased selection:bg-airbnb selection:text-white">
 
     <nav class="fixed top-0 w-full z-50 px-4 sm:px-6 py-4">
-        <div class="glass-panel max-w-7xl mx-auto rounded-full px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-4">
+        <div class="glass-panel max-w-7xl mx-auto rounded-full px-4 sm:px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2 sm:gap-4 overflow-hidden">
                 <div class="shrink-0">
                     <svg viewBox="0 0 32 32" class="block h-8 w-8 sm:h-10 sm:w-10 fill-current text-airbnb" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 3.162.722 4.672l-.08.585c-.36 2.27-1.88 4.285-4.05 5.39l-.615.287-.64.252c-3.17.104-4.23-1.399-4.928-3.225l-.058-.16-.106-.34c-.56-1.762-1.46-1.856-2.533-1.943l-.262-.018c-1.232-.057-2.222.253-2.797 2.048l-.062.205-.05.188c-.748 2.642-2.086 3.316-4.528 3.248l-.627-.048-.575-.083c-2.33-.406-4.078-2.334-4.573-5.058l-.065-.409-.037-.47c-.133-1.917.24-3.76 1.053-5.37l.234-.44.077-.132c.986-2.292 5.164-11.026 7.11-14.847L11.786 4.27C13.075 1.964 14.53 1 16 1zm0 2c-1.235 0-2.376.755-3.364 2.523l-.442.853c-1.93 3.783-6.128 12.558-7.117 14.863l-.145.355c-.65 1.553-.92 3.05-.746 4.38l.053.365.045.248c.34 1.726 1.558 3.09 3.215 3.379l.39.055.336.029c1.402.04 2.014-.531 2.352-1.71l.072-.273.075-.23c.822-2.565 2.552-3.217 4.172-3.14l.286.018c1.603.129 3.13.58 3.943 3.137l.087.29.073.22c.385 1.072 1.052 1.52 2.23 1.48l.35-.024.364-.064c1.367-.307 2.504-1.638 2.836-3.34l.054-.323.036-.38c.104-1.04-.06-2.222-.527-3.458l-.182-.457-.116-.273c-.984-2.29-5.16-11.005-7.102-14.82L16.82 4.52C15.833 2.755 14.692 2 16 2z" fill-rule="evenodd"></path>
                     </svg>
                 </div>
-                <div class="flex flex-col justify-center leading-tight">
-                    <h1 class="text-sm sm:text-xl font-extrabold text-gray-900 tracking-tight">Airbnb – Guía Local Monterrey</h1>
-                    <p class="text-[10px] sm:text-xs font-medium text-airbnb truncate max-w-[200px] sm:max-w-none">Calle Siderúrgica 108, Buenos Aires, 64800 Monterrey, N.L., México</p>
+                <div class="flex flex-col justify-center leading-tight overflow-hidden">
+                    <h1 class="text-xs sm:text-xl font-extrabold text-gray-900 tracking-tight truncate">Airbnb – Guía Local</h1>
+                    <p class="text-[10px] sm:text-xs font-medium text-airbnb truncate">Calle Siderúrgica 108, Monterrey</p>
                 </div>
             </div>
-            <div class="hidden sm:flex items-center gap-3">
-                <span class="text-xs font-bold text-gray-500 cursor-pointer hover:text-airbnb transition-colors" onclick="openModal('modal-mis-airbnbs')">Mis Alojamientos</span>
+            <!-- Eliminado 'hidden' para que se vea en móviles, el texto se oculta en móviles pero el icono queda -->
+            <div class="flex items-center gap-3 shrink-0">
+                <span class="hidden sm:block text-xs font-bold text-gray-500 cursor-pointer hover:text-airbnb transition-colors" onclick="openModal('modal-mis-airbnbs')">Mis Alojamientos</span>
                 <!-- Botón de ayuda actualizado para abrir el modal de Mis Airbnbs -->
                 <button onclick="openModal('modal-mis-airbnbs')" class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform text-airbnb cursor-pointer">
                     <i data-lucide="help-circle" class="w-5 h-5"></i>
