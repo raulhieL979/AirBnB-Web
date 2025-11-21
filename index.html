@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Vital para móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía del Huésped - Casa 3D</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -45,7 +45,7 @@
             background-color: #f3f4f6;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent; /* Elimina el flash azul al tocar en móviles */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .hero-bg {
@@ -90,9 +90,10 @@
             border: 2px solid white;
         }
 
-        .listing-card-container { perspective: 1000px; transition: all 0.5s ease; }
-        .listing-card-container.hidden-card { display: none; }
-        .listing-card-container.show-card { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        /* Clases compartidas para Cards y Secciones de Tips */
+        .listing-card-container, .tips-section { perspective: 1000px; transition: all 0.5s ease; }
+        .listing-card-container.hidden-card, .tips-section.hidden-card { display: none; }
+        .listing-card-container.show-card, .tips-section.show-card { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
         @keyframes popIn {
             from { opacity: 0; transform: scale(0.8) translateY(20px); }
@@ -106,7 +107,6 @@
             box-shadow: 12px 12px 24px rgba(174, 174, 192, 0.4), -12px -12px 24px #FFFFFF;
             overflow: hidden; position: relative; cursor: pointer;
         }
-        /* Efecto activo para móviles */
         .listing-card:active { transform: scale(0.98); transition: transform 0.1s; }
 
         .listing-image { transform: translateZ(20px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
@@ -146,8 +146,12 @@
                     <p class="text-[10px] sm:text-xs font-medium text-airbnb truncate max-w-[200px] sm:max-w-none">Calle Siderúrgica 108, Buenos Aires, 64800 Monterrey, N.L., México</p>
                 </div>
             </div>
-            <div class="hidden sm:flex items-center gap-4">
-                <button class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform text-airbnb"><i data-lucide="help-circle" class="w-5 h-5"></i></button>
+            <div class="hidden sm:flex items-center gap-3">
+                <span class="text-xs font-bold text-gray-500 cursor-pointer hover:text-airbnb transition-colors" onclick="openModal('modal-mis-airbnbs')">Mis Alojamientos</span>
+                <!-- Botón de ayuda actualizado para abrir el modal de Mis Airbnbs -->
+                <button onclick="openModal('modal-mis-airbnbs')" class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform text-airbnb cursor-pointer">
+                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -519,7 +523,6 @@
                             <h3 class="font-bold text-xl text-gray-800 flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" class="h-6 w-auto" alt="Airbnb"> Taxis y Apps</h3>
                             <p class="text-gray-500 text-sm mt-1">Uber y Didi funcionan 24/7.</p>
                         </div>
-                        <!-- Botones funcionales para Uber y DiDi -->
                         <div class="flex gap-3">
                             <a href="https://m.uber.com/ul" target="_blank" class="flex-1 btn-action flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm hover:bg-black hover:text-white transition-colors">
                                 <i data-lucide="smartphone" class="w-4 h-4"></i> Uber
@@ -528,6 +531,51 @@
                                 <i data-lucide="car" class="w-4 h-4"></i> DiDi
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Sections -->
+        <div id="tips-container" class="mt-12 max-w-4xl mx-auto">
+            <!-- Tips Plazas -->
+            <div id="tips-plazas" class="tips-section show-card bg-white rounded-3xl p-6 shadow-xl border border-gray-100 flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left" data-category="plazas">
+                <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-airbnb shrink-0">
+                    <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Tips para ir de Compras</h3>
+                    <p class="text-gray-600 text-sm mb-4">Si buscas evitar multitudes, te recomendamos visitar las plazas entre semana por la mañana. ¡Es el momento ideal para disfrutar de las tiendas con tranquilidad!</p>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium italic">"¡Gracias por elegirnos! Esperamos que disfrute de las mejores compras y paseos en Monterrey."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Turismo -->
+            <div id="tips-turismo" class="tips-section hidden-card bg-white rounded-3xl p-6 shadow-xl border border-gray-100 flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left" data-category="turismo">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 shrink-0">
+                    <i data-lucide="camera" class="w-8 h-8"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Tips para Turistear</h3>
+                    <p class="text-gray-600 text-sm mb-4">Para los parques como Fundidora o La Pastora, lleva zapatos muy cómodos y agua, caminarás bastante. Revisa el clima antes de salir, el sol regio es intenso.</p>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium italic">"¡Gracias por su preferencia! Deseamos que se lleve recuerdos inolvidables de nuestra ciudad."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Transporte -->
+            <div id="tips-transporte" class="tips-section hidden-card bg-white rounded-3xl p-6 shadow-xl border border-gray-100 flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left" data-category="transporte">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0">
+                    <i data-lucide="bus" class="w-8 h-8"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Tips de Movilidad</h3>
+                    <p class="text-gray-600 text-sm mb-4">En horas pico (7-9am y 6-8pm) el tráfico aumenta considerablemente. Considera pedir tu Uber/DiDi con tiempo. Para el bus, ten cambio exacto a la mano.</p>
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium italic">"¡Gracias por hospedarse con nosotros! Que tenga traslados seguros y eficientes."</p>
                     </div>
                 </div>
             </div>
@@ -651,6 +699,7 @@
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="activity" class="w-5 h-5 text-airbnb"></i> Actividades</h3>
                 <ul class="space-y-3">
                     <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0"><i data-lucide="award" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Juegos de Borregos</span></li>
+                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 shrink-0"><i data-lucide="music" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Conciertos</span></li>
                 </ul>
             </div>
         </div>
@@ -833,7 +882,6 @@
                 <button onclick="closeModal('modal-aeropuerto')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <div class="p-6 overflow-y-auto custom-scroll bg-white/80 backdrop-blur-xl flex-1">
-                <p class="text-gray-600 mb-6 leading-relaxed">Servicio de transporte público de bajo costo que conecta la estación del Metro "Y Griega" con el Aeropuerto Internacional de Monterrey.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                     <a href="https://historico.nl.gob.mx/campanas/conoce-la-ruta-express-aeropuerto-y-griega" target="_blank" class="flex items-center justify-center gap-2 bg-white border border-gray-200 p-3 rounded-xl font-bold text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors shadow-sm"><i data-lucide="globe" class="w-4 h-4 text-airbnb"></i> Sitio Web</a>
                     <a href="https://www.google.com/maps/dir/?api=1&origin=Calle+Siderurgica+108+Buenos+Aires+Monterrey&destination=Estacion+Y+Griega+Monterrey" target="_blank" class="flex items-center justify-center gap-2 bg-green-50 border border-green-100 p-3 rounded-xl font-bold text-sm text-green-700 hover:bg-green-100 transition-colors shadow-sm"><i data-lucide="map-pin" class="w-4 h-4"></i> Ruta a Estación Y Griega</a>
@@ -843,6 +891,45 @@
                     <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0"><i data-lucide="dollar-sign" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Costo: $15 MXN (Pago exacto)</span></li>
                     <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0"><i data-lucide="clock" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Horario: 04:00 AM - 11:00 PM</span></li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nuevo Modal: Mis Airbnbs -->
+    <div id="modal-mis-airbnbs" class="fixed inset-0 z-[70] hidden flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-mis-airbnbs')"></div>
+        <div class="glass-panel w-full max-w-lg max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl text-gray-800 font-extrabold flex items-center gap-2">
+                    <i data-lucide="home" class="w-6 h-6 text-airbnb"></i> Mis Alojamientos
+                </h2>
+                <button onclick="closeModal('modal-mis-airbnbs')" class="bg-gray-100 hover:bg-gray-200 p-2 rounded-full text-gray-500 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div class="overflow-y-auto custom-scroll flex-1 flex flex-col gap-4">
+                <p class="text-gray-500 text-sm text-center mb-2">¡Gracias por elegirnos! Aquí puedes ver mis otros espacios disponibles.</p>
+                
+                <!-- Airbnb 1 (Enlace Actualizado) -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="h-32 bg-gray-200 rounded-xl w-full mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-634766567956650035/original/75604c4d-a19e-4c49-8308-101702a84238.jpeg?im_w=1200" class="w-full h-full object-cover" alt="Casa Entera">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Casa Monterrey cerca de Fundidora</h3>
+                    <p class="text-sm text-gray-500 mb-3">Disfruta de una estancia cómoda y céntrica.</p>
+                    <a href="https://www.airbnb.mx/rooms/634766567956650035" target="_blank" class="block w-full text-center bg-airbnb hover:bg-airbnbDark text-white font-bold py-2 rounded-xl transition-colors">Ver en Airbnb</a>
+                </div>
+
+                <!-- Airbnb 2 (Enlace Actualizado) -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="h-32 bg-gray-200 rounded-xl w-full mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-678417820581264512/original/8a46c5d3-be83-4ebf-9ff7-c590e4019988.jpeg?im_w=1200" class="w-full h-full object-cover" alt="Depa-Loft Monterrey">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Depa-Loft Monterrey</h3>
+                    <p class="text-sm text-gray-500 mb-3">Conoce más detalles de esta propiedad.</p>
+                    <a href="https://www.airbnb.mx/rooms/678417820581264512" target="_blank" class="block w-full text-center bg-airbnb hover:bg-airbnbDark text-white font-bold py-2 rounded-xl transition-colors">Ver en Airbnb</a>
+                </div>
             </div>
         </div>
     </div>
@@ -876,18 +963,33 @@
             element.classList.remove('text-gray-500', 'hover:text-airbnb');
 
             const allCards = document.querySelectorAll('.listing-card-container');
+            const allTips = document.querySelectorAll('.tips-section');
             
+            // Hide all cards and tips
             allCards.forEach(card => {
                 card.classList.remove('show-card');
                 card.classList.add('hidden-card');
-                
-                setTimeout(() => {
+            });
+            allTips.forEach(tip => {
+                tip.classList.remove('show-card');
+                tip.classList.add('hidden-card');
+            });
+
+            // Show selected
+            setTimeout(() => {
+                allCards.forEach(card => {
                     if(card.dataset.category === category) {
                         card.classList.remove('hidden-card');
                         card.classList.add('show-card');
                     }
-                }, 50);
-            });
+                });
+                allTips.forEach(tip => {
+                    if(tip.dataset.category === category) {
+                        tip.classList.remove('hidden-card');
+                        tip.classList.add('show-card');
+                    }
+                });
+            }, 50);
         }
 
         const cards = document.querySelectorAll('.listing-card');
