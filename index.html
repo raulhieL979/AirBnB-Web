@@ -146,12 +146,15 @@
                     <p class="text-[10px] sm:text-xs font-medium text-airbnb truncate">Calle Siderúrgica 108, Monterrey</p>
                 </div>
             </div>
-            <!-- Eliminado 'hidden' para que se vea en móviles, el texto se oculta en móviles pero el icono queda -->
-            <div class="flex items-center gap-3 shrink-0">
-                <span class="hidden sm:block text-xs font-bold text-gray-500 cursor-pointer hover:text-airbnb transition-colors" onclick="openModal('modal-mis-airbnbs')">Mis Alojamientos</span>
-                <!-- Botón de ayuda actualizado para abrir el modal de Mis Airbnbs -->
-                <button onclick="openModal('modal-mis-airbnbs')" class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform text-airbnb cursor-pointer">
-                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+            
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <!-- Texto visible en móviles (más pequeño) -->
+                <span class="text-[10px] sm:text-xs font-bold text-gray-500 cursor-pointer hover:text-airbnb transition-colors leading-tight text-right" onclick="openModal('modal-mis-airbnbs')">
+                    Mis <br class="sm:hidden"> Alojamientos
+                </span>
+                <!-- Botón de ayuda -->
+                <button onclick="openModal('modal-mis-airbnbs')" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform text-airbnb cursor-pointer">
+                    <i data-lucide="help-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </button>
             </div>
         </div>
