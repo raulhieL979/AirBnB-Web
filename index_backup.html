@@ -129,67 +129,6 @@
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Hero entrance animation */
-        .hero-animate { animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .hero-animate-delay-1 { animation: slideUp 0.9s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .hero-animate-delay-2 { animation: slideUp 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(28px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Cerro de la Silla silhouette */
-        .mountain-silhouette { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
-
-        /* Star rating badge */
-        .star-badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: white; padding: 5px 12px; border-radius: 20px;
-            font-size: 11px; font-weight: 800; letter-spacing: 0.03em;
-            box-shadow: 0 4px 14px rgba(255,165,0,0.35);
-        }
-
-        /* Scroll to top button */
-        #scroll-top-btn {
-            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 40;
-            width: 48px; height: 48px;
-            background: #FF5A5F; color: white; border: none;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 24px rgba(255,90,95,0.45);
-            cursor: pointer; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0; transform: translateY(16px) scale(0.8);
-        }
-        #scroll-top-btn.visible { opacity: 1; transform: translateY(0) scale(1); }
-        #scroll-top-btn:hover { transform: translateY(-4px) scale(1.08); box-shadow: 0 14px 32px rgba(255,90,95,0.55); }
-
-        /* Card category badge */
-        .card-badge {
-            position: absolute; top: 12px; right: 12px;
-            padding: 4px 10px; border-radius: 8px;
-            font-size: 10px; font-weight: 800; letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        /* Tips section enhanced */
-        .tips-section { transition: all 0.5s ease; }
-
-        /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b5e 100%);
-            color: white; position: relative; overflow: hidden;
-        }
-        .site-footer::before {
-            content: ''; position: absolute; top: -50%; left: -20%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255,90,95,0.12) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Image shimmer while loading */
-        .img-shimmer { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 400% 100%; animation: shimmer 1.4s infinite; }
-        @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
     </style>
 </head>
 <body class="text-gray-700 antialiased selection:bg-airbnb selection:text-white">
@@ -225,49 +164,17 @@
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
-        <!-- Cerro de la Silla silhouette (Monterrey iconic mountain) -->
-        <svg class="mountain-silhouette" viewBox="0 0 1440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,280 L0,230 L80,210 L160,225 L240,185 L300,200 L360,155 L410,175 L460,125 L510,145 L555,95 L590,115 L620,72 L648,58 L668,40 L682,52 L700,24 L715,38 L735,10 L752,28 L772,5 L788,22 L808,42 L830,28 L855,50 L878,35 L905,65 L930,48 L960,78 L995,60 L1030,90 L1070,68 L1110,100 L1150,78 L1190,118 L1240,95 L1290,140 L1340,115 L1395,165 L1440,155 L1440,280 Z" fill="url(#mountainGrad)" opacity="0.07"/>
-            <path d="M0,280 L0,248 L100,235 L180,242 L260,220 L320,232 L380,210 L420,218 L465,198 L510,210 L550,188 L590,205 L630,180 L670,198 L710,170 L740,185 L780,160 L820,180 L860,155 L900,175 L945,152 L990,170 L1040,148 L1090,168 L1140,145 L1195,168 L1250,148 L1310,178 L1370,160 L1440,195 L1440,280 Z" fill="url(#mountainGrad)" opacity="0.05"/>
-            <defs>
-                <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#FF5A5F"/>
-                    <stop offset="100%" stop-color="#a18cd1"/>
-                </linearGradient>
-            </defs>
-        </svg>
     </div>
 
     <main class="pt-28 pb-20 px-4 sm:px-8 max-w-[1600px] mx-auto relative z-10">
         <div class="flex flex-col items-center justify-center mb-12 mt-8 text-center">
-            <div class="mb-4 px-4 py-1.5 bg-white/70 backdrop-blur-md rounded-full border border-white/90 shadow-sm inline-flex items-center gap-2 hero-animate">
-                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                <span class="text-xs font-bold text-airbnb tracking-wider uppercase">Guía del Huésped · Monterrey</span>
+            <div class="mb-4 px-4 py-1 bg-white/60 backdrop-blur-md rounded-full border border-white shadow-sm inline-block">
+                <span class="text-xs font-bold text-airbnb tracking-wider uppercase">Guía del Huésped</span>
             </div>
-            <h1 class="text-4xl md:text-7xl font-extrabold text-gray-800 mb-4 drop-shadow-sm leading-tight hero-animate-delay-1">
-                Bienvenido a <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-airbnb via-rose-500 to-orange-500">Tu Hogar Temporal.</span>
+            <h1 class="text-4xl md:text-7xl font-extrabold text-gray-800 mb-6 drop-shadow-sm leading-tight">
+                Bienvenido a <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-airbnb to-orange-500">Tu Hogar Temporal.</span>
             </h1>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto font-medium hero-animate-delay-2">Hemos seleccionado lo mejor de Monterrey para hacer tu estancia increíble.</p>
-
-            <!-- Stats bar -->
-            <div class="flex flex-wrap gap-3 justify-center mt-6 hero-animate-delay-2">
-                <div class="flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/90 shadow-sm">
-                    <span class="text-yellow-400 text-sm">★★★★★</span>
-                    <span class="text-xs font-bold text-gray-700">Superanfitrión</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/90 shadow-sm">
-                    <i data-lucide="users" class="w-3.5 h-3.5 text-airbnb"></i>
-                    <span class="text-xs font-bold text-gray-700">+200 Huéspedes Felices</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/90 shadow-sm">
-                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-airbnb"></i>
-                    <span class="text-xs font-bold text-gray-700">Buenos Aires, Monterrey N.L.</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/90 shadow-sm">
-                    <i data-lucide="wifi" class="w-3.5 h-3.5 text-airbnb"></i>
-                    <span class="text-xs font-bold text-gray-700">WiFi 400 Mbps</span>
-                </div>
-            </div>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto font-medium">Hemos seleccionado lo mejor de la zona para ti.</p>
         </div>
 
         <div class="flex flex-wrap gap-6 justify-center mb-16">
@@ -374,7 +281,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-bbva')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://www.materialesjerez.com.mx/wp-content/uploads/2018/06/Estadio-BBVA-costrurama-materiales.jpg" alt="Estadio BBVA" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://www.materialesjerez.com.mx/wp-content/uploads/2018/06/Estadio-BBVA-costrurama-materiales.jpg" alt="Estadio BBVA" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute top-3 right-3 bg-blue-900 text-white px-3 py-1 rounded-lg shadow-md"><span class="text-xs font-bold">Rayados</span></div>
                         <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10-20 min</span></div>
@@ -398,7 +305,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-banorte')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://distritotec.tec.mx/sites/g/files/vgjovo1626/files/inline-images/dtec-cbd-07_52565656227_o_0.jpg" alt="Estadio Banorte" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://distritotec.tec.mx/sites/g/files/vgjovo1626/files/inline-images/dtec-cbd-07_52565656227_o_0.jpg" alt="Estadio Banorte" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~5-8 min</span></div>
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-gray-500 flex items-center gap-1"><i data-lucide="footprints" class="w-3 h-3"></i> ~40 min</span></div>
@@ -421,7 +328,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-barrio')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2023/01/DSC_9633-700x541-1.jpeg" alt="Barrio Antiguo" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2023/01/DSC_9633-700x541-1.jpeg" alt="Barrio Antiguo" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-lg shadow-md"><span class="text-xs font-bold">Cultural</span></div>
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10-15 min</span></div>
@@ -445,7 +352,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-lucia')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://www.turimexico.com/wp-content/uploads/2015/06/paseo-santa-lucia.jpg" alt="Paseo Santa Lucía" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://www.turimexico.com/wp-content/uploads/2015/06/paseo-santa-lucia.jpg" alt="Paseo Santa Lucía" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10 min</span></div>
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-gray-500 flex items-center gap-1"><i data-lucide="footprints" class="w-3 h-3"></i> ~40-50 min</span></div>
@@ -468,7 +375,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-fundidora')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://i.elhorizonte.mx/img/eh/2890000/2892356_fundidoraok2.jpg" alt="Parque Fundidora" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://i.elhorizonte.mx/img/eh/2890000/2892356_fundidoraok2.jpg" alt="Parque Fundidora" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute top-3 right-3 bg-green-600 text-white px-3 py-1 rounded-lg shadow-md"><span class="text-xs font-bold">Icono</span></div>
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10 min</span></div>
@@ -492,7 +399,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-espana')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://iphonegr.elnorte.com/libre/online07/imagetransformer2/ImageTransformer.aspx?img=https://img.gruporeforma.com/imagenes/960x640/6/546/5545370.jpg&imagencompleta=1" alt="Parque España" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://iphonegr.elnorte.com/libre/online07/imagetransformer2/ImageTransformer.aspx?img=https://img.gruporeforma.com/imagenes/960x640/6/546/5545370.jpg&imagencompleta=1" alt="Parque España" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10-12 min</span></div>
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-gray-500 flex items-center gap-1"><i data-lucide="footprints" class="w-3 h-3"></i> ~12 min</span></div>
@@ -515,7 +422,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-riosilla')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://www.nomada.news/wp-content/uploads/2019/11/rio-la-silla-monterrey-guadalupe.jpg" alt="Río La Silla" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://www.nomada.news/wp-content/uploads/2019/11/rio-la-silla-monterrey-guadalupe.jpg" alt="Río La Silla" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~12 min</span></div>
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-gray-500 flex items-center gap-1"><i data-lucide="footprints" class="w-3 h-3"></i> ~20-25 min</span></div>
@@ -538,7 +445,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="turismo" onclick="openModal('modal-pastora')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://ladesa.com/wp-content/uploads/2022/11/lpl08.jpg" alt="Parque La Pastora" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://ladesa.com/wp-content/uploads/2022/11/lpl08.jpg" alt="Parque La Pastora" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                          <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~10-15 min</span></div>
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50"><span class="text-xs font-bold text-gray-500 flex items-center gap-1"><i data-lucide="footprints" class="w-3 h-3"></i> ~1h 20-1h 30m</span></div>
@@ -563,7 +470,7 @@
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="transporte" onclick="openModal('modal-central')">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
                     <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img loading="lazy" src="https://www.rdlparquitectos.com/media/1838/_tab3573.jpg" alt="Central de Autobuses" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://www.rdlparquitectos.com/media/1838/_tab3573.jpg" alt="Central de Autobuses" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute top-3 left-3 flex flex-col gap-2 items-start">
                             <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-white/50">
                                 <span class="text-xs font-bold text-airbnb flex items-center gap-1"><i data-lucide="car" class="w-3 h-3"></i> ~20-25 min</span>
@@ -610,13 +517,10 @@
             <!-- Taxis y Apps -->
             <div class="listing-card-container hidden-card active:scale-95 transition-transform duration-200" data-category="transporte">
                 <div class="listing-card h-[450px] w-full rounded-3xl p-4 flex flex-col justify-between cursor-pointer group hover:border-airbnb/50 transition-colors">
-                    <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1600&auto=format&fit=crop" alt="Uber y DiDi en Monterrey" loading="lazy" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                        <div class="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-lg shadow-md"><span class="text-xs font-bold">24/7</span></div>
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span class="bg-white/90 backdrop-blur text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">Ver Detalles</span>
-                        </div>
+                    <div class="relative h-[60%] w-full rounded-2xl overflow-hidden listing-image bg-gray-100 flex items-center justify-center">
+                         <div class="w-32 h-32 bg-gray-800 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-[10deg] group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="car-taxi-front" class="w-16 h-16 text-white"></i>
+                       </div>
                     </div>
                     <div class="listing-details mt-4 flex flex-col gap-2 h-[40%] justify-between">
                         <div>
@@ -681,57 +585,6 @@
             </div>
         </div>
     </main>
-
-    <!-- === FOOTER === -->
-    <footer class="site-footer relative z-10 mt-8 py-12 px-4 sm:px-8">
-        <div class="max-w-5xl mx-auto">
-            <!-- Top row -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
-                <div class="flex items-center gap-3">
-                    <svg viewBox="0 0 32 32" class="block h-9 w-9 fill-current text-airbnb" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 3.162.722 4.672l-.08.585c-.36 2.27-1.88 4.285-4.05 5.39l-.615.287-.64.252c-3.17.104-4.23-1.399-4.928-3.225l-.058-.16-.106-.34c-.56-1.762-1.46-1.856-2.533-1.943l-.262-.018c-1.232-.057-2.222.253-2.797 2.048l-.062.205-.05.188c-.748 2.642-2.086 3.316-4.528 3.248l-.627-.048-.575-.083c-2.33-.406-4.078-2.334-4.573-5.058l-.065-.409-.037-.47c-.133-1.917.24-3.76 1.053-5.37l.234-.44.077-.132c.986-2.292 5.164-11.026 7.11-14.847L11.786 4.27C13.075 1.964 14.53 1 16 1zm0 2c-1.235 0-2.376.755-3.364 2.523l-.442.853c-1.93 3.783-6.128 12.558-7.117 14.863l-.145.355c-.65 1.553-.92 3.05-.746 4.38l.053.365.045.248c.34 1.726 1.558 3.09 3.215 3.379l.39.055.336.029c1.402.04 2.014-.531 2.352-1.71l.072-.273.075-.23c.822-2.565 2.552-3.217 4.172-3.14l.286.018c1.603.129 3.13.58 3.943 3.137l.087.29.073.22c.385 1.072 1.052 1.52 2.23 1.48l.35-.024.364-.064c1.367-.307 2.504-1.638 2.836-3.34l.054-.323.036-.38c.104-1.04-.06-2.222-.527-3.458l-.182-.457-.116-.273c-.984-2.29-5.16-11.005-7.102-14.82L16.82 4.52C15.833 2.755 14.692 2 16 2z" fill-rule="evenodd"></path>
-                    </svg>
-                    <div>
-                        <p class="font-extrabold text-white text-lg leading-tight">Airbnb – Guía Local</p>
-                        <p class="text-white/50 text-xs">Calle Siderúrgica 108, Monterrey N.L.</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-yellow-400 text-base">★★★★★</span>
-                    <span class="text-white/70 text-sm font-medium">Superanfitrión verificado</span>
-                </div>
-            </div>
-
-            <!-- Quick links -->
-            <div class="grid grid-cols-3 sm:grid-cols-3 gap-4 mb-8 text-center">
-                <button onclick="filterContent('plazas', document.querySelector('[onclick*=plazas]'))" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl p-4 transition-all cursor-pointer group">
-                    <i data-lucide="layout-grid" class="w-6 h-6 text-airbnb mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
-                    <p class="text-white text-xs font-bold">Plazas</p>
-                    <p class="text-white/50 text-[10px] mt-1">3 lugares</p>
-                </button>
-                <button onclick="filterContent('turismo', document.querySelector('[onclick*=turismo]'))" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl p-4 transition-all cursor-pointer group">
-                    <i data-lucide="camera" class="w-6 h-6 text-orange-400 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
-                    <p class="text-white text-xs font-bold">Turismo</p>
-                    <p class="text-white/50 text-[10px] mt-1">7 lugares</p>
-                </button>
-                <button onclick="filterContent('transporte', document.querySelector('[onclick*=transporte]'))" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl p-4 transition-all cursor-pointer group">
-                    <i data-lucide="bus" class="w-6 h-6 text-blue-400 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
-                    <p class="text-white text-xs font-bold">Transporte</p>
-                    <p class="text-white/50 text-[10px] mt-1">3 opciones</p>
-                </button>
-            </div>
-
-            <!-- Bottom bar -->
-            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p class="text-white/40 text-xs">© 2025 · Hecho con ♥ para nuestros huéspedes en Monterrey</p>
-                <div class="flex items-center gap-3">
-                    <a href="https://www.airbnb.mx/rooms/634766567956650035" target="_blank" class="text-xs text-white/60 hover:text-airbnb font-medium transition-colors">Ver en Airbnb</a>
-                    <span class="text-white/20">·</span>
-                    <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="text-xs text-white/60 hover:text-white font-medium transition-colors">↑ Volver arriba</button>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- === MODALES === -->
 
@@ -816,7 +669,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-bbva')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://www.materialesjerez.com.mx/wp-content/uploads/2018/06/Estadio-BBVA-costrurama-materiales.jpg" class="w-full h-full object-cover">
+                <img src="https://www.materialesjerez.com.mx/wp-content/uploads/2018/06/Estadio-BBVA-costrurama-materiales.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Estadio BBVA</h2></div>
                 <button onclick="closeModal('modal-bbva')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -838,7 +691,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-banorte')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://distritotec.tec.mx/sites/g/files/vgjovo1626/files/inline-images/dtec-cbd-07_52565656227_o_0.jpg" class="w-full h-full object-cover">
+                <img src="https://distritotec.tec.mx/sites/g/files/vgjovo1626/files/inline-images/dtec-cbd-07_52565656227_o_0.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Estadio Banorte</h2></div>
                 <button onclick="closeModal('modal-banorte')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -860,7 +713,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-barrio')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2023/01/DSC_9633-700x541-1.jpeg" class="w-full h-full object-cover">
+                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2023/01/DSC_9633-700x541-1.jpeg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Barrio Antiguo</h2></div>
                 <button onclick="closeModal('modal-barrio')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -872,9 +725,6 @@
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="coffee" class="w-5 h-5 text-airbnb"></i> Imperdibles</h3>
                 <ul class="space-y-3">
                     <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700 shrink-0"><i data-lucide="music" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Vida Nocturna & Bares</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0"><i data-lucide="coffee" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Cafés & Bistros con encanto</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0"><i data-lucide="palette" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Arte callejero y galerías</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 shrink-0"><i data-lucide="church" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Arquitectura colonial del s. XVIII</span></li>
                 </ul>
             </div>
         </div>
@@ -884,7 +734,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-lucia')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://www.turimexico.com/wp-content/uploads/2015/06/paseo-santa-lucia.jpg" class="w-full h-full object-cover">
+                <img src="https://www.turimexico.com/wp-content/uploads/2015/06/paseo-santa-lucia.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Paseo Santa Lucía</h2></div>
                 <button onclick="closeModal('modal-lucia')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -895,10 +745,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="compass" class="w-5 h-5 text-airbnb"></i> Experiencias</h3>
                 <ul class="space-y-3">
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0"><i data-lucide="ship" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Recorrido en Bote ($20 MXN aprox.)</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 shrink-0"><i data-lucide="footprints" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Caminata ribereña (4 km)</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0"><i data-lucide="utensils" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Restaurantes y terrazas a orillas</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 shrink-0"><i data-lucide="moon" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Iluminación nocturna espectacular</span></li>
+                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0"><i data-lucide="ship" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Recorrido en Bote ($)</span></li>
                 </ul>
             </div>
         </div>
@@ -908,7 +755,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-fundidora')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://i.elhorizonte.mx/img/eh/2890000/2892356_fundidoraok2.jpg" class="w-full h-full object-cover">
+                <img src="https://i.elhorizonte.mx/img/eh/2890000/2892356_fundidoraok2.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Parque Fundidora</h2></div>
                 <button onclick="closeModal('modal-fundidora')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -949,7 +796,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-espana')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://iphonegr.elnorte.com/libre/online07/imagetransformer2/ImageTransformer.aspx?img=https://img.gruporeforma.com/imagenes/960x640/6/546/5545370.jpg&imagencompleta=1" class="w-full h-full object-cover">
+                <img src="https://iphonegr.elnorte.com/libre/online07/imagetransformer2/ImageTransformer.aspx?img=https://img.gruporeforma.com/imagenes/960x640/6/546/5545370.jpg&imagencompleta=1" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Parque España</h2></div>
                 <button onclick="closeModal('modal-espana')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -960,9 +807,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="sun" class="w-5 h-5 text-airbnb"></i> Lo mejor</h3>
                 <ul class="space-y-3">
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 shrink-0"><i data-lucide="tree-pine" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Puente Verde (Vistas panorámicas)</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 shrink-0"><i data-lucide="bike" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Ciclopista y área de ejercicio</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 shrink-0"><i data-lucide="sun" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Área de picnic y jardines</span></li>
+                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 shrink-0"><i data-lucide="tree-pine" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Puente Verde (Vistas)</span></li>
                 </ul>
             </div>
         </div>
@@ -972,7 +817,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-riosilla')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://www.nomada.news/wp-content/uploads/2019/11/rio-la-silla-monterrey-guadalupe.jpg" class="w-full h-full object-cover">
+                <img src="https://www.nomada.news/wp-content/uploads/2019/11/rio-la-silla-monterrey-guadalupe.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Río La Silla</h2></div>
                 <button onclick="closeModal('modal-riosilla')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -993,7 +838,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-pastora')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://ladesa.com/wp-content/uploads/2022/11/lpl08.jpg" class="w-full h-full object-cover">
+                <img src="https://ladesa.com/wp-content/uploads/2022/11/lpl08.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">La Pastora</h2></div>
                 <button onclick="closeModal('modal-pastora')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -1004,10 +849,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><i data-lucide="paw-print" class="w-5 h-5 text-airbnb"></i> Atracciones</h3>
                 <ul class="space-y-3">
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 shrink-0"><i data-lucide="cat" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Zoológico (Entrada gratuita)</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0"><i data-lucide="waves" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Lago artificial y lanchas</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 shrink-0"><i data-lucide="leaf" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Jardín Botánico</span></li>
-                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 shrink-0"><i data-lucide="ferris-wheel" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Área de juegos infantiles</span></li>
+                    <li class="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-white"><div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 shrink-0"><i data-lucide="cat" class="w-4 h-4"></i></div><span class="font-medium text-gray-700">Zoológico</span></li>
                 </ul>
             </div>
         </div>
@@ -1017,7 +859,7 @@
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeModal('modal-central')"></div>
         <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl relative flex flex-col overflow-hidden shadow-2xl animate-modal-in">
             <div class="h-48 w-full relative shrink-0">
-                <img loading="lazy" src="https://www.rdlparquitectos.com/media/1838/_tab3573.jpg" class="w-full h-full object-cover">
+                <img src="https://www.rdlparquitectos.com/media/1838/_tab3573.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><h2 class="text-3xl text-white font-extrabold drop-shadow-md">Central de Autobuses</h2></div>
                 <button onclick="closeModal('modal-central')" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -1169,31 +1011,6 @@
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
             });
         });
-
-        // Scroll-to-top button
-        const scrollBtn = document.getElementById('scroll-top-btn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
-        });
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Footer quick-nav fixes active pill
-        document.querySelectorAll('.site-footer button[onclick]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
     </script>
-
-    <!-- Scroll to top button -->
-    <button id="scroll-top-btn" aria-label="Volver arriba">
-        <i data-lucide="arrow-up" class="w-5 h-5"></i>
-    </button>
 </body>
 </html>
